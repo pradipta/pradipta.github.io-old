@@ -4385,6 +4385,24 @@ input, select, textarea {
 	#copyright {
 		color: #ffffff;
 		position: relative;
+		color: rgba(0, 0, 0, 0.25);
+		cursor: default;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 0.8rem;
+		font-weight: 900;
+		letter-spacing: 0.075em;
+		line-height: 1.5;
+		text-align: center;
+		text-transform: uppercase;
+		margin: 1rem auto 1rem auto;
+		width: calc(100% - 4rem);
+		max-width: 72rem;
+		z-index: 2;
+	}
+
+	#social-footer {
+		color: #ffffff;
+		position: relative;
 		color: rgba(255, 255, 255, 0.25);
 		cursor: default;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -4394,7 +4412,7 @@ input, select, textarea {
 		line-height: 1.5;
 		text-align: center;
 		text-transform: uppercase;
-		margin: 4rem auto 8rem auto;
+		margin: 1rem auto 1rem auto;
 		width: calc(100% - 4rem);
 		max-width: 72rem;
 		z-index: 2;
