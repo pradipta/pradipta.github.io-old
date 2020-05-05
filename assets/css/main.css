@@ -3470,7 +3470,7 @@ input, select, textarea {
 
 			#intro {
 				padding: 3rem 2rem 1rem 2rem ;
-				min-height: 80vh;
+				min-height: 60vh;
 			}
 
 				#intro h1 {
@@ -4480,9 +4480,9 @@ input, select, textarea {
 
 		@media screen and (max-width: 1280px) {
 
-			#copyright {
+			/* #copyright {
 				margin: 4rem auto;
-			}
+			} */
 
 		}
 
@@ -4704,4 +4704,14 @@ input, select, textarea {
 			visibility: visible;
 		}
 
+	}
+
+	/* custom */
+
+	.bottom-card{
+
+		position: fixed;
+		width: 100%;
+		bottom: 2rem;
+	
 	}
