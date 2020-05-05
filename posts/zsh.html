@@ -15,31 +15,7 @@
 	<noscript>
 		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 
-	<script>
-		$.getJSON("https://api.ipify.org?format=json",
-			function (data) {
-				$("#gfg").html(data.ip);
-				var payload = {
-					"path": window.location.pathname,
-					"ip": data.ip,
-				}
-				console.log(payload)
-				$.ajax({
-					url: "https://cors-anywhere.herokuapp.com/http://13.232.6.205/add",
-					method: "post",
-					contentType: 'application/json',
-					data: JSON.stringify(payload),
-					dataType: "json",
 
-					success: (resp) => {
-						console.log(resp)
-					},
-					error: (err) => {
-						console.log(err)
-					}
-				});
-			}) 
-	</script>
 </head>
 
 <body class="is-preload">
@@ -100,7 +76,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 				<P>Install zsh-autosuggestions and zsh-syntax-highlighting:</P>
 				<pre><code>brew install zsh-syntax-highlighting
 brew install zsh-autosuggestions</code></pre>
-				<p>YOu can set your ZSH theme by putting in this line into your .zshrc file. Make sure you import the
+				<p>You can set your ZSH theme by putting in this line into your .zshrc file. Make sure you import the
 					.zshrc after any change for it to reflect.
 					<pre><code>ZSH_THEME=robbyrussell</code></pre>
 				</p>
@@ -118,13 +94,13 @@ brew install zsh-autosuggestions</code></pre>
 							&text=Found%20this%20nice%20article%20at%20OmniaCode%2C%20consider%20giving%20it%20a%20read."
 							class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
 
-					<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pradiptasarma.github.io&amp;title=Found%20this%20nice%20article%20at%20OmniaCode%2C%20consider%20giving%20it%20a%20read."
+					<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pradiptasarma.github.io/posts/zsh.html&amp;title=Found%20this%20nice%20article%20at%20OmniaCode%2C%20consider%20giving%20it%20a%20read."
 							class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+
+					<li><a href="whatsapp://send?text=Found this awesome article at Omnia Code. Give it a read. https://pradiptasarma.github.io/posts/zsh.html" data-action="share/whatsapp/share"
+							class="icon brands alt fa-whatsapp"><span class="label">WhatsApp</span></a></li>
 				</ul>
 			</section>
-
-
-
 		</div>
 
 		<!-- Copyright -->

@@ -8,31 +8,6 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script>
-	<script>
-		$.getJSON("https://api.ipify.org?format=json",
-			function (data) {
-				$("#gfg").html(data.ip);
-				var payload = {
-					"path": window.location.pathname,
-					"ip": data.ip,
-				}
-				console.log(payload)
-				$.ajax({
-					url: "https://cors-anywhere.herokuapp.com/http://13.232.6.205/add",
-					method: "post",
-					contentType: 'application/json',
-					data: JSON.stringify(payload),
-					dataType: "json",
-
-					success: (resp)=>{
-						console.log(resp)
-					},
-					error:(err)=>{
-						console.log(err)
-					}
-				});
-			}) 
-	</script>
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
