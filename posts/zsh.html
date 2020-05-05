@@ -11,8 +11,35 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../assets/css/main.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+
+	<script>
+		$.getJSON("https://api.ipify.org?format=json",
+			function (data) {
+				$("#gfg").html(data.ip);
+				var payload = {
+					"path": window.location.pathname,
+					"ip": data.ip,
+				}
+				console.log(payload)
+				$.ajax({
+					url: "https://cors-anywhere.herokuapp.com/http://13.232.6.205/add",
+					method: "post",
+					contentType: 'application/json',
+					data: JSON.stringify(payload),
+					dataType: "json",
+
+					success: (resp) => {
+						console.log(resp)
+					},
+					error: (err) => {
+						console.log(err)
+					}
+				});
+			}) 
+	</script>
 </head>
 
 <body class="is-preload">
@@ -75,23 +102,28 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 brew install zsh-autosuggestions</code></pre>
 				<p>YOu can set your ZSH theme by putting in this line into your .zshrc file. Make sure you import the
 					.zshrc after any change for it to reflect.
-					<pre><code>ZSH_THEME=robbyrussell</code></pre></p>
+					<pre><code>ZSH_THEME=robbyrussell</code></pre>
+				</p>
 				<P>At this point your terminal/iTerm2 should look something like: </P>
 				<div class="image main"><img src="../images/zsh.png" alt="" /></div>
 				<P>And this is much better. Notice the short git commands that I've used? Well those are
-					configurable too. Follow this <a href="https://github.com/pradiptasarma/Terminal-Setup-for-Mac">repository</a> for the complete guide and .zshrc file with all the configurations, aliases and functions.</P>
+					configurable too. Follow this <a
+						href="https://github.com/pradiptasarma/Terminal-Setup-for-Mac">repository</a> for the complete
+					guide and .zshrc file with all the configurations, aliases and functions.</P>
 
-					<h3>Share this post on:</h3>
-					<ul class="icons alt">
-						<li><a href="https://twitter.com/intent/tweet
+				<h3>Share this post on:</h3>
+				<ul class="icons alt">
+					<li><a href="https://twitter.com/intent/tweet
 							?url=https%3A%2F%2Fpradiptasarma.github.io%2Fposts%2Fzsh.html
-							&text=Found%20this%20nice%20article%20at%20OmniaCode%2C%20consider%20giving%20it%20a%20read." class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-						
-						<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pradiptasarma.github.io&amp;title=Found%20this%20nice%20article%20at%20OmniaCode%2C%20consider%20giving%20it%20a%20read." class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					</ul>
+							&text=Found%20this%20nice%20article%20at%20OmniaCode%2C%20consider%20giving%20it%20a%20read."
+							class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+
+					<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://pradiptasarma.github.io&amp;title=Found%20this%20nice%20article%20at%20OmniaCode%2C%20consider%20giving%20it%20a%20read."
+							class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				</ul>
 			</section>
 
-			
+
 
 		</div>
 
@@ -115,13 +147,13 @@ brew install zsh-autosuggestions</code></pre>
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.scrollex.min.js"></script>
+	<script src="../assets/js/jquery.scrolly.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
 
 </body>
 
