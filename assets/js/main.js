@@ -265,7 +265,7 @@
 				}
 				console.log(payload)
 				$.ajax({
-					url: "https://cors-anywhere.herokuapp.com/http://15.206.149.124/add",
+					url: "https://cors-anywhere.herokuapp.com/http://15.206.149.124:2000/api/traffic/add",
 					method: "post",
 					contentType: 'application/json',
 					data: JSON.stringify(payload),
