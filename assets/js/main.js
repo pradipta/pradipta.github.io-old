@@ -261,7 +261,7 @@
 				$("#gfg").html(data.ip);
 				var payload = {
 					"path": window.location.pathname,
-					"ip": data.ip,
+					"address": data.ip,
 				}
 				console.log(payload)
 				$.ajax({
