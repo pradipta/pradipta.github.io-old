@@ -85,7 +85,9 @@ $ cd alfred</code></pre>
                     <li>You must place the CoffeeScript or the JS in the<code>scripts</code> directory</li>
                     <li>You must have to export the function from the script</li>
                 </ul>
-                <p>Let's create a custom script which gives you the idea of how to actually write one. Move to the scripts directory, and create a <code>.coffee</code> or or a <code>.js</code> file. I named mine <code>alfred.coffee</code></p>
+                <p>Let's create a custom script which gives you the idea of how to actually write one. Move to the
+                    scripts directory, and create a <code>.coffee</code> or or a <code>.js</code> file. I named mine
+                    <code>alfred.coffee</code></p>
                 <pre><code>cd scripts</code></pre>
                 <p>The first thing you need to do is add this section in the script:</p>
                 <pre><code># Description:
@@ -103,37 +105,58 @@ $ cd alfred</code></pre>
 # Author:
 #   pradipta.sarma</code></pre>
 
-                    <p>This is where Hubot can index your command into its list of all commands, which shows up on hitting <code>alfred help</code></p>
+                <p>This is where Hubot can index your command into its list of all commands, which shows up on hitting
+                    <code>alfred help</code></p>
 
 
-                    <p>To export the function off the script:</p>
-                    <pre><code>module.exports = (robot) ->
+                <p>To export the function off the script:</p>
+                <pre><code>module.exports = (robot) ->
     #Your code here</code></pre>
 
-                    <p>To respond to messages, we write the <code>respond</code> code as:</p>
-                    <pre><code>models.respond /hello/i, (res) ->
+                <p>To respond to messages, we write the <code>respond</code> code as:</p>
+                <pre><code>models.respond /hello/i, (res) ->
     res.reply("Hey, what's up?")</code></pre>
 
-                    <p>This code will make the bot listen to his name followed by the Regex pattern <code>/hello/i</code>, and should reply with <code>“Hey, what’s up?”</code></p>
-                    <div class="image main"><img src="images/alfredhello.png" alt="" /></div>
-                    <p>Res is the object that contains the message details, sender name, channel (if on slack) etc. You can look around and find some useful information in there. To customise the message you can change the code to:</p>
-                    <pre><code>module.exports = (robot) ->
+                <p>This code will make the bot listen to his name followed by the Regex pattern <code>/hello/i</code>,
+                    and should reply with <code>“Hey, what’s up?”</code></p>
+                <div class="image main"><img src="images/alfredhello.png" alt="" /></div>
+                <p><i>res</i> is the object that contains the message details, sender name, channel (if on slack) etc.
+                    You can look around and find some useful information in there. To customise the message you can
+                    change the code to:</p>
+                <pre><code>module.exports = (robot) ->
     robot.respond /hello/i, (res) ->
         res.reply("Hey "+res.envelope.user.name+", what's up?")</code></pre>
-                    <p>On trying <code>alfred hello</code> now, the response would <code>Hey Shell, what's up?</code>. Since it is running it on Shell. This name would be replaced by a user's username if the bot had been running on Slack.</p>
-                    <p>To add more functionalities to your bot, this is all you need to know. You can add more .respond code with a suitable regex so that it gets triggered and the code following it executes. You can make HTTP calls, run a workflow, send an email, trigger a deployment, or whatever you want to automate with it.</p>
+                <p>On trying <code>alfred hello</code> now, the response would <code>Hey Shell, what's up?</code>. Since
+                    it is running it on Shell. This name would be replaced by a user's username if the bot had been
+                    running on Slack.</p>
+                <p>To add more functionalities to your bot, this is all you need to know. You can add more .respond code
+                    with a suitable regex so that it gets triggered and the code following it executes. You can make
+                    HTTP calls, run a workflow, send an email, trigger a deployment, or whatever you want to automate
+                    with it.</p>
 
-                    <p>Slack comes with the option of integrating a Hubot out of the box. Go to &ltyour-workspace&gt.slack.com/apps and search for Hubot. Enter a name for the bot and other details that Slack asks for and once done, Slack will provide you with a Token. We need this token when we want to run the bot on Slack.</p>
-                    <div class="image main"><img src="images/slackapitoken.png" alt="" /></div>
-                    <p>To run the bot on Slack, make sure your computer has an internet connection (if running locally), or you're running on a cloud server. Run command:</p>
-                    <p><code>HUBOT_SLACK_TOKEN=YOUR_SLACK_TOKEN ./bin/hubot --adapter slack</code></p>
+                <p>Slack comes with the option of integrating a Hubot out of the box. Go to
+                    &ltyour-workspace&gt.slack.com/apps and search for Hubot. Enter a name for the bot and other details
+                    that Slack asks for and once done, Slack will provide you with a Token. We need this token when we
+                    want to run the bot on Slack.</p>
+                <div class="image main"><img src="images/slackapitoken.png" alt="" /></div>
+                <p>To run the bot on Slack, make sure your computer has an internet connection (if running locally), or
+                    you're running on a cloud server. Run command:</p>
+                <p><code>HUBOT_SLACK_TOKEN=YOUR_SLACK_TOKEN ./bin/hubot --adapter slack</code></p>
 
-                    <p>It should now be up an running on Slack. Add the bot to a channel and send <code>alfred ping</code>. It should respond with <code>PONG</code></p>
-                    <br>
-                    <p>In my previous organization there was Winky. A friendly bot which helped developers reserve dev and staging environments so that nobody has a conflict, nobody else deploys while somebody is testing a feature, but instead get the details of whoever is using an instance so that he/she can get in touch and maybe merge the changes and deploy together.</p>
-                    <p>I wanted to build something similar for my current organisation and that’s when I started off with Alfred and learned how to build a Hubot, integrate it with Slack and have it running on a server. I drew the idea from Winky, and Alfred here does almost the same thing. Thanks to <a href="https://github.com/captn3m0">Nemo</a> from Razorpay.</p>
-                    <p>Checkout this <a href="https://github.com/pradipta/alfred">repository</a> for the code to the bot built for our workspace.</p>
-                    <p>Good luck. Build a few bots. Happy coding.</p>
+                <p>It should now be up an running on Slack. Add the bot to a channel and send <code>alfred ping</code>.
+                    It should respond with <code>PONG</code></p>
+                <br>
+                <p>In my previous organization there was Winky. A friendly bot which helped developers reserve dev and
+                    staging environments so that nobody has a conflict, nobody else deploys while somebody is testing a
+                    feature, but instead get the details of whoever is using an instance so that he/she can get in touch
+                    and maybe merge the changes and deploy together.</p>
+                <p>I wanted to build something similar for my current organisation and that’s when I started off with
+                    Alfred and learned how to build a Hubot, integrate it with Slack and have it running on a server. I
+                    drew the idea from Winky, and Alfred here does almost the same thing. Thanks to <a
+                        href="https://github.com/captn3m0">Nemo</a> from Razorpay.</p>
+                <p>Checkout this <a href="https://github.com/pradipta/alfred">repository</a> for the code to the bot
+                    built for our workspace.</p>
+                <p>Good luck. Build a few bots. Happy coding.</p>
                 <h3>Share this post on:</h3>
                 <ul class="icons alt">
                     <li><a href="https://twitter.com/intent/tweet
@@ -164,7 +187,8 @@ $ cd alfred</code></pre>
                             class="label">Twitter</span></a> | <a href="https://www.linkedin.com/in/pradiptasarma/"
                         class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a> | <a
                         href="https://github.com/pradipta" class="icon brands alt fa-github"><span
-                            class="label">GitHub</span></a></ul>
+                            class="label">GitHub</span></a> | <a href="https://medium.com/@pradiptasarma"
+                        class="icon brands alt fa-medium"><span class="label">GitHub</span></a></ul>
             </div>
         </div>
 
