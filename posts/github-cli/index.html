@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <title>Omnia Code | Build a Slackbot using Hubot</title>
+    <title>Omnia Code | Day 1 with the Github CLI 1.0</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="keywords" content="OmniaCode, Slack, Slackbot, Hubot, CoffeeScript, NodeJS">
-    <meta name="description" content="Build bots using Hubot in CoffeeScript or JS in NodeJS. Integrate it with Slack and build a Slackbot.">
+    <meta name="description"
+        content="Build bots using Hubot in CoffeeScript or JS in NodeJS. Integrate it with Slack and build a Slackbot.">
     <link rel="stylesheet" href="../../assets/css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -42,123 +43,55 @@
             <section class="post">
                 <header class="major">
                     <span class="date">May 15, 2020</span>
-                    <h1>Build a Slackbot <br />
-                        using Hubot</h1>
+                    <h1>Day 1 with the <br />
+                        Github CLI 1.0</h1>
                     <!-- <p>The default terminal on a Macv device sucks</p> -->
                 </header>
-                <header>
+                <!-- <header>
                     <p>"Hubot is your friendly robot sidekick."</p>
-                </header>
+                </header> -->
 
                 <!-- <div class="image main"><img src="images/terminal.png" alt="" /></div> -->
-                <p>Hubot is open source, it is written in Coffee Script on NodeJS by Github. It can automate a lot of
-                    stuff and bring up fun in around the office, and improve efficiency in some tasks.</p>
+                <p>GitHub finally launch their CLI, versioned 1.0 after 7 months of having it in Beta. Done with Cmd+Tab
+                    / Ctrl+tab to move to the browser. Do it all at one place.</p>
 
 
-                <p>Hubot comes along with a few built-in scripts and is pretty fun to use in itself. It can be used on
-                    your command line, or can be integrated to other services, like Slack. You can even write your own
-                    script or an NPM module and import it into your Hubot project. The script can be written in
-                    CoffeeScript, or JS.</p>
+                <p>You can install the GitHub CLI on your laptop and can perform entire GitHub's workflow right from the
+                    terminal, starting from creating an issue, reviewing a PR, to merging a PR. You can create aliases
+                    against any commands.
+                    You can also use GitHub APIs to trigger Actions.</p>
+                <p>Visit this <a href="https://cli.github.com/">link</a> for the official documentation.</p>
+                To install Github CLI, open the terminal and run:</p>
 
-                <p>To get started with Hubot, you must have <a href="https://nodejs.org/en/download/">NodeJS</a> and <a
-                        href="https://www.npmjs.com/get-npm">NPM</a> installed.</p>
+                <pre><code>brew install gh [Mac]
+sudo apt-add-repository https://cli.github.com/packages && sudo apt update && sudo apt install gh [Linux]
+scoop bucket add github-gh https://github.com/cli/scoop-gh.git [Windows]
+</code></pre>
+                <div class="image main"><img src="images/install.png" alt="" /></div>
+                <div class="image small"><img src="images/help.png" alt="" /></div>
 
-                <p>To generate your hubot run <code>npm install -g yo generator-hubot</code></p>
+                <p>After the installation, we need to authenticate the CLI with our GitHub Account. For that, run <code>gh auth login</code> and proceed with the instructions that follow.</p>
+                <div class="image main"><img src="images/login.png" alt="" /></div>
+                <p>On a successful login, we now can perform all the workflows of GitHub, for which, previously, we had to open the browser, right from the terminal. Let's look at some of them.</code></p>
 
-                <p>Now think of a name for your Hubot and create a directory. I named mine `Alfred`</p>
+                <pre><code>gh repo clone &ltrepo name&gt</code></pre>
+                <div class="image main"><img src="images/clone.png" alt="" /></div>
 
-                <pre><code>$ mkdir alfred
-$ cd alfred</code></pre>
-                <p>Here you can now generate your Hubot by running <code>yo hubot</code></p>
-                <div class="image main"><img src="images/yohubot.png" alt="" /></div>
-                <p>You can now run the hubot by running <code>./bin/hubot</code></p>
-                <p>To get a list of all supported commands by Alfred, run <code>alfred help</code>. Since it already
-                    comes with some scripts and modules installed, you can play around with it.</p>
-                <div class="image main"><img src="images/alfredping.png" alt="" /></div>
-                <p>Although these are fun, they are not of actual help. We can write our own scripts that can do what we
-                    want them to do. We can automate stuff, make it talk to third party apis, deploy services, set
-                    reminders and what not! You can also persist data into its own Redis service (called Hubot Brain) or
-                    connect it to an external database service.</p>
-                <p>There are other open source Hubot scripts. Search for them on the NPM registry for
-                    <code>hubot-scripts &ltyour-search-term&gt</code>. Once you find one you can install it and put it
-                    up on <code>external-scripts.json.</code></p>
-                <p>To write your own script:</p>
-                <ul>
-                    <li>You must place the CoffeeScript or the JS in the<code>scripts</code> directory</li>
-                    <li>You must have to export the function from the script</li>
-                </ul>
-                <p>Let's create a custom script which gives you the idea of how to actually write one. Move to the
-                    scripts directory, and create a <code>.coffee</code> or or a <code>.js</code> file. I named mine
-                    <code>alfred.coffee</code></p>
-                <pre><code>cd scripts</code></pre>
-                <p>The first thing you need to do is add this section in the script:</p>
-                <pre><code># Description:
-#   Alfred Hubot
-#
-# Dependencies:
-#   None
-#
-# Configuration:
-#   None
-#
-# Commands:
-#   hubot hello
-#
-# Author:
-#   pradipta.sarma</code></pre>
+                <p>A <code>gh repo</code> view would show us the Readme for the repo, if any. We can create an issue on a repo using <code>gh issue create</code> and entering the details that it asks for.</code></p>
+                <div class="image main"><img src="images/issuecreate.png" alt="" /></div>
+                <p>I created a new branch and made some changes, commited them and pushed it to the branch. To raise a PR, I previously had to go to GitHub.com on my browser and raise it from there. No more. All you need is: <code>gh pr create</code></p>
+                <div class="image main"><img src="images/prcreate.png" alt="" /></div>
+                
+                <p>We can also perform PR reviews from the CLI. I haven't tried out reviewing a big PR on it to put my thoughts about it. But yes, we can. We can approve, leave comments, or request for changes right from the CLI.</p>
+                <div class="image main"><img src="images/prreview.png" alt="" /></div>
+                
+                <p></p>Also, have it merged.</p>
+                <div class="image main"><img src="images/prmerge.png" alt="" /></div>
 
-                <p>This is where Hubot can index your command into its list of all commands, which shows up on hitting
-                    <code>alfred help</code></p>
-
-
-                <p>To export the function off the script:</p>
-                <pre><code>module.exports = (robot) ->
-    #Your code here</code></pre>
-
-                <p>To respond to messages, we write the <code>respond</code> code as:</p>
-                <pre><code>models.respond /hello/i, (res) ->
-    res.reply("Hey, what's up?")</code></pre>
-
-                <p>This code will make the bot listen to his name followed by the Regex pattern <code>/hello/i</code>,
-                    and should reply with <code>“Hey, what’s up?”</code></p>
-                <div class="image main"><img src="images/alfredhello.png" alt="" /></div>
-                <p><i>res</i> is the object that contains the message details, sender name, channel (if on slack) etc.
-                    You can look around and find some useful information in there. To customise the message you can
-                    change the code to:</p>
-                <pre><code>module.exports = (robot) ->
-    robot.respond /hello/i, (res) ->
-        res.reply("Hey "+res.envelope.user.name+", what's up?")</code></pre>
-                <p>On trying <code>alfred hello</code> now, the response would <code>Hey Shell, what's up?</code>. Since
-                    it is running it on Shell. This name would be replaced by a user's username if the bot had been
-                    running on Slack.</p>
-                <p>To add more functionalities to your bot, this is all you need to know. You can add more .respond code
-                    with a suitable regex so that it gets triggered and the code following it executes. You can make
-                    HTTP calls, run a workflow, send an email, trigger a deployment, or whatever you want to automate
-                    with it.</p>
-
-                <p>Slack comes with the option of integrating a Hubot out of the box. Go to
-                    &ltyour-workspace&gt.slack.com/apps and search for Hubot. Enter a name for the bot and other details
-                    that Slack asks for and once done, Slack will provide you with a Token. We need this token when we
-                    want to run the bot on Slack.</p>
-                <div class="image main"><img src="images/slackapitoken.png" alt="" /></div>
-                <p>To run the bot on Slack, make sure your computer has an internet connection (if running locally), or
-                    you're running on a cloud server. Run command:</p>
-                <p><code>HUBOT_SLACK_TOKEN=YOUR_SLACK_TOKEN ./bin/hubot --adapter slack</code></p>
-
-                <p>It should now be up an running on Slack. Add the bot to a channel and send <code>alfred ping</code>.
-                    It should respond with <code>PONG</code></p>
-                <br>
-                <p>In my previous organization there was Winky, a friendly bot which helped developers reserve dev and
-                    staging environments so that nobody has a conflict, nobody else deploys while somebody is testing a
-                    feature, but instead get the details of whoever is using an instance so that he/she can get in touch
-                    and maybe merge the changes and deploy together.</p>
-                <p>I wanted to build something similar for my current organisation and that’s when I started off with
-                    Alfred and learned how to build a Hubot, integrate it with Slack and have it running on a server. I
-                    drew the idea from Winky, and Alfred here does almost the same thing. Thanks to <a
-                        href="https://github.com/captn3m0">Nemo</a> from Razorpay.</p>
-                <p>Checkout this <a href="https://github.com/pradipta/alfred">repository</a> for the code to the bot
-                    built for our workspace.</p>
-                <p>Good luck. Build a few bots. Happy coding.</p>
+                <p>This is just an overview, there are a whole lot of commands we need to play around and try out.</p>
+                <p>One of the best things: to create a new repo, we donot need to do a git init, Create Repo on GitHub.com, and git remote add origin .... It is just a command on the CLI.</p>
+                <p>Happy Git!</p>
+                
                 <h3>Share this post on:</h3>
                 <ul class="icons alt">
                     <li><a href="https://twitter.com/intent/tweet
